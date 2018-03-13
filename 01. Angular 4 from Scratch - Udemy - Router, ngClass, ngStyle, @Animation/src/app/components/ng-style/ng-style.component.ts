@@ -11,7 +11,7 @@ export class NgStyleComponent implements OnInit {
     multipleStyles = {
         "background": "grey",
         "padding": "50px",
-        "font-size": "3em"
+        "font-size": "1.5em"
     }
 
     constructor() { }

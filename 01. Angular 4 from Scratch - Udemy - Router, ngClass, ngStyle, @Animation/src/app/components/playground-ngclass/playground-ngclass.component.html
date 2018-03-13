@@ -1,0 +1,40 @@
+<div class="layground-element-holder">
+    <div [ngClass]="multipleClasses" class="playground-live-element">
+        <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur nisi, voluptate officia error sed quaerat incidunt deserunt dicta. Voluptas excepturi accusamus corporis nobis commodi magni debitis quod illo a dicta alias dolorem, aperiam eaque facilis, quae nam obcaecati minus vero? Inventore neque libero, dolorum modi labore tempora eaque maxime minus!
+        </span>
+    </div>
+</div>
+
+<!-- Checkboxes -->
+<div class="checkbox">
+    <h4>Section Chekboses</h4>
+    <label>
+        <input (click)="textCenter()" type="checkbox" value="">
+        Text Center
+    </label>
+    <label>
+        <input (click)="bgGreen()" type="checkbox" value="">
+        Background Green
+    </label>
+    <label>
+        <input (click)="width400()" type="checkbox" value="">
+        Width 400px
+    </label>
+    <hr>
+</div>
+
+<!-- Select -->
+<div class="select-holder">
+    <select #selectTextColor (change)="setTextColor(selectTextColor.value)" class="form-control">
+        <option *ngFor="let color of selectColorsList" [value]="color">{{color}}</option>
+    </select>
+
+    <select #selectTextSize (change)="setTextSize(selectTextSize.value)" class="form-control">
+        <option *ngFor="let size of selectTextSizeList" [value]="size.id">{{size.name}}</option>
+    </select>
+
+    <select #selectPadding (change)="setPadding(selectPadding.value)" class="form-control">
+        <option *ngFor="let padding of selectPaddingList" [value]="padding.id" >{{padding.name}}</option>
+    </select>
+</div>

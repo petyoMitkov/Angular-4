@@ -1,0 +1,92 @@
+.layground-element-holder {
+    height: 300px;
+    background: rgb(180, 180, 180);
+    overflow: auto;
+}
+
+.playground-live-element {
+    background: rgb(102, 101, 101);
+    margin: auto;
+}
+
+
+/* ====== Chekboxes ======= */
+
+.checkbox label {
+    margin-right: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-green {
+    background: greenyellow;
+}
+
+.width-400px {
+    width: 400px;
+}
+
+
+/* ========= Section Select ======== */
+
+.select-holder select {
+    width: 260px;
+    margin-top: 20px;
+    margin-right: 50px;
+    display: inline-block;
+}
+
+
+/* Text Color*/
+
+.select-red {
+    color: rgb(241, 60, 60);
+}
+
+.select-blue {
+    color: rgb(157, 193, 247);
+}
+
+.select-orange {
+    color: rgb(241, 146, 36);
+}
+
+
+/* Select Text Size */
+
+.font-20px {
+    font-size: 20px;
+}
+
+.font-26px {
+    font-size: 26px;
+}
+
+.font-32px {
+    font-size: 32px;
+}
+
+
+/* Select Padding */
+
+.padding-left-50px {
+    padding-left: 50px;
+}
+
+.padding-right-50px {
+    padding-right: 50px;
+}
+
+.padding-top-50px {
+    padding-top: 50px;
+}
+
+.padding-bottom-50px {
+    padding-bottom: 50px;
+}
+
+.padding-all-50px {
+    padding: 50px;
+}

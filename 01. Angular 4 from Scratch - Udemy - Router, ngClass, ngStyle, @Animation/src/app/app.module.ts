@@ -13,6 +13,7 @@ import { NgClassComponent } from './components/ng-class/ng-class.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NgStyleComponent } from './components/ng-style/ng-style.component';
 import { AnimationsComponent } from './components/animations/animations.component';
+import { PlaygroundNgclassComponent } from './components/playground-ngclass/playground-ngclass.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AnimationsComponent } from './components/animations/animations.componen
     NgClassComponent,
     NotFoundComponent,
     NgStyleComponent,
-    AnimationsComponent
+    AnimationsComponent,
+    PlaygroundNgclassComponent
   ],
   imports: [
     BrowserModule,
