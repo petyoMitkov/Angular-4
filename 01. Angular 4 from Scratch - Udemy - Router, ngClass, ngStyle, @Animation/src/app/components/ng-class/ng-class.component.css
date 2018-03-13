@@ -1,0 +1,22 @@
+h1 {
+    font-size: 1.4em;
+}
+
+.red-title {
+    color: red;
+}
+
+
+/* multiple classes for ngClass */
+
+.green {
+    color: green;
+}
+
+.border {
+    border: 2px solid black;
+}
+
+.padding {
+    padding: 50px;
+}

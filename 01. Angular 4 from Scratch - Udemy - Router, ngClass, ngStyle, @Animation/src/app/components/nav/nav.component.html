@@ -14,12 +14,19 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
 
         <ul class="nav navbar-nav navbar-right">
-            <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a>Home</a>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a routerLink="/">Home</a>
             </li>
-            <li routerLink="/ng-class" routerLinkActive="active">
-                <a>ngClass</a>
+            <li routerLinkActive="active">
+                <a routerLink="/ng-class">ngClass</a>
             </li>
+            <li routerLinkActive="active">
+                <a [routerLink]="['/ng-style']">ngStyle</a>
+            </li>
+            <li routerLinkActive="active">
+                <a [routerLink]="[ '/animatinos']">Animatinos</a>
+            </li>
+
         </ul>
     </div>
     <!-- /.navbar-collapse -->

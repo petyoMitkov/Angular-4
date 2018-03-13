@@ -1,3 +1,5 @@
-<p>
-  ng-class works!
-</p>
+<h1 [class]="titleClass">Title with red-title class, add class name [class]="titleClass"</h1>
+
+<h1 [class.red-title]="titleClassTrueOrFalse">Title add class if True or False [class.red-title]="titleClass-T-F"</h1>
+
+<h1 [ngClass]="multipleClasses">Title with multiple classes by ngClass [ngClass]="multipleClasses-obj"</h1>

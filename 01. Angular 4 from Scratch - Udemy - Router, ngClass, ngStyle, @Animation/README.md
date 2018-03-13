@@ -4,7 +4,12 @@
 
 ---------------------------------------------------------------------------------------
 ### Add app-routing.module.ts
-ng g m app-routing --flat --module=app
+ng g m app-routing --flat --module=app  //create manually with command ocure error
+
+### Add Animations and import in app.module.ts { BrowserAnimationsModule }
+npm install @angular/animations@4.0.0 --save
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 ---------------------------------------------------------------------------------------
