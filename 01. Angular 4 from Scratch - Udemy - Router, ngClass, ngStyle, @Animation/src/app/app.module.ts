@@ -3,21 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { RouterModule, Routes } from '@angular/router';
-
-
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgClassComponent } from './components/ng-class/ng-class.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
-
-const appRoutes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'ng-class', component: NgClassComponent },
-    { path: '**', component: NotFoundComponent  }
-  ];
+import { AppRoutingModule }     from './app-routing.module';
+import { NgStyleComponent } from './components/ng-style/ng-style.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +18,14 @@ const appRoutes: Routes = [
     NavComponent,
     HomeComponent,
     NgClassComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NgStyleComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
