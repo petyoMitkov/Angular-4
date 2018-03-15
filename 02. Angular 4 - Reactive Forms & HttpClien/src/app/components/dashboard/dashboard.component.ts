@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
-
 import { Contact } from '../../models/contact-interface';
 
 @Component({
@@ -10,20 +9,19 @@ import { Contact } from '../../models/contact-interface';
     styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-    contacts: Contact[] = [];
+    contactsList: Contact[] = [];
 
     constructor(private _dataServise: DataService) { }
 
     ngOnInit() {
-        this._dataServise.getData().subscribe(res => {
-            //this.contacts = res;
-            for (var key in res) {
-                console.log(key, res[key].person);
-
-                this.contacts.push({ person: res[key].person, phone: res[key].phone})
-            }
-            console.log(this.contacts);
-        })
+        this._dataServise.initData();
+        this.contactsList = this._dataServise.contacts;
+        console.log(this._dataServise.contacts);
     }
+
+    onNewContact(contact: Contact) {
+        this.contactsList.unshift(contact);
+    }
+
 
 }

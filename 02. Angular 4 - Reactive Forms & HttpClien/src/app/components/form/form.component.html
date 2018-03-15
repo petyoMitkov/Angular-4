@@ -1,0 +1,19 @@
+<div class="form-holder">
+    <form action="" method="POST" role="form">
+        <legend>Add Record</legend>
+
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" class="form-control" #name>
+        </div>
+
+        <div class="form-group">
+            <label for="">Phone</label>
+            <input type="text" class="form-control" #phone>
+        </div>
+
+        <div class="text-right">
+            <button (click)="postRecord(name.value, phone.value)" class="btn btn-primary ">Add Record</button>
+        </div>
+    </form>
+</div>
