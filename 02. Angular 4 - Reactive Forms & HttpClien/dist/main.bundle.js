@@ -26,7 +26,7 @@ exports = module.exports = __webpack_require__(22)();
 
 
 // module
-exports.push([module.i, ".dashboard {\r\n    border: 10px solid rgb(110, 181, 209);\r\n    border-radius: 10px;\r\n    margin-top: 10px;\r\n    padding: 20px 20px 150px 20px;\r\n    animation: fadeInDashboard 1.2s;\r\n}\r\n\r\n.header {\r\n    text-align: center;\r\n    margin-bottom: 50px;\r\n}\r\n\r\n.add-new-item,\r\n.list-group-item {\r\n    animation: fadeIn 1s;\r\n}\r\n\r\n@keyframes fadeIn {\r\n    0% {\r\n        opacity: 0.5;\r\n        background: rgb(19, 161, 26);\r\n    }\r\n    50% {\r\n        background: rgb(19, 161, 26);\r\n        opacity: 1;\r\n    }\r\n    100% {\r\n        background: rgb(255, 255, 255);\r\n        opacity: 1;\r\n    }\r\n}\r\n\r\n@keyframes fadeInDashboard {\r\n    0% {\r\n        opacity: 0;\r\n    }\r\n    99% {\r\n        opacity: 0;\r\n    }\r\n}\r\n\r\n@media (max-width: 768px) {\r\n    .dashboard {\r\n        padding: 0px 0px 150px 0px;\r\n        border: none;\r\n    }\r\n}", ""]);
+exports.push([module.i, ".dashboard {\r\n    border: 8px solid rgb(110, 181, 209);\r\n    border-radius: 10px;\r\n    margin-top: 10px;\r\n    padding: 20px 20px 150px 20px;\r\n    animation: fadeInDashboard 1.2s;\r\n}\r\n\r\n.btn:active,\r\n.btn:focus {\r\n    outline: none;\r\n}\r\n\r\n.header {\r\n    text-align: center;\r\n    margin-bottom: 50px;\r\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif\r\n}\r\n\r\n\r\n/* ======= Contacts List =======*/\r\n\r\n.person-name {\r\n    line-height: 10px;\r\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif\r\n}\r\n\r\n.city-and-occupation {\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    font-style: italic;\r\n    font-weight: 500;\r\n    font-size: 1.1em;\r\n    padding: 10px 0 10px 0;\r\n}\r\n\r\n.city-and-occupation :first-child {\r\n    -ms-flex: 1;\r\n        flex: 1;\r\n}\r\n\r\n.city-and-occupation span {\r\n    -ms-flex: 2;\r\n        flex: 2;\r\n}\r\n\r\n.glyphicon-phone-alt {\r\n    font-size: 1.2em;\r\n    color: rgb(102, 102, 102);\r\n    margin-right: 10px;\r\n}\r\n\r\n.phone-holder {\r\n    font-size: 1.4em;\r\n}\r\n\r\n.delete-holder {\r\n    padding: 5px 0 5px 0;\r\n    text-align: right;\r\n}\r\n\r\n\r\n/* ================ Animation ==================== */\r\n\r\n.add-new-item,\r\n.list-group-item {\r\n    animation: fadeIn 1s;\r\n}\r\n\r\n@keyframes fadeIn {\r\n    0% {\r\n        opacity: 0.5;\r\n        background: rgb(19, 161, 26);\r\n    }\r\n    50% {\r\n        background: rgb(19, 161, 26);\r\n        opacity: 1;\r\n    }\r\n    100% {\r\n        background: rgb(255, 255, 255);\r\n        opacity: 1;\r\n    }\r\n}\r\n\r\n@keyframes fadeInDashboard {\r\n    0% {\r\n        opacity: 0;\r\n    }\r\n    99% {\r\n        opacity: 0;\r\n    }\r\n}\r\n\r\n@media (max-width: 768px) {\r\n    .dashboard {\r\n        padding: 0px 0px 150px 0px;\r\n        border: none;\r\n    }\r\n}", ""]);
 
 // exports
 
@@ -44,7 +44,7 @@ exports = module.exports = __webpack_require__(22)();
 
 
 // module
-exports.push([module.i, ".form-holder {\r\n    border: 4px solid rgb(110, 181, 209);\r\n    border-radius: 10px;\r\n    margin-bottom: 30px;\r\n    padding: 20px;\r\n}", ""]);
+exports.push([module.i, ".form-holder {\r\n    border: 2px solid rgb(110, 181, 209);\r\n    border-radius: 10px;\r\n    margin-bottom: 30px;\r\n    padding: 20px;\r\n}\r\n\r\nlegend {\r\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif\r\n}", ""]);
 
 // exports
 
@@ -64,14 +64,14 @@ module.exports = "<div class=\"container\">\n    <app-dashboard></app-dashboard>
 /***/ 146:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row dashboard\">\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 header\">\n        <h1>\n            Phone Book with data from Firebase\n        </h1>\n    </div>\n    <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\">\n        <app-form (newContact)=\"onNewContact($event)\"></app-form>\n    </div>\n    <div class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\">\n        <ul class=\"list-group\">\n            <li class=\"list-group-item\" *ngFor=\"let contact of contactsList\" let i=\"index\">\n                Name: {{contact.person}} Phone: {{contact.phone}}\n            </li>\n        </ul>\n    </div>\n</div>"
+module.exports = "<div class=\"row dashboard\">\n    <div class=\"col-xs-12 col-sm-12 col-md-12 col-lg-12 header\">\n        <h1>\n            Phone Book with data from Firebase\n        </h1>\n    </div>\n    <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <app-form (newContact)=\"onNewContact($event)\"></app-form>\n    </div>\n    <div class=\"col-xs-12 col-sm-12 col-md-6 col-lg-6\">\n        <ul class=\"list-group\">\n            <li class=\"list-group-item\" *ngFor=\"let contact of contactsList\" let i=\"index\">\n\n                <h3 class=\"person-name\">{{contact.person}}</h3>\n                <div class=\"city-and-occupation\">\n                    <span> {{contact.city}} </span> <span> {{contact.occupation}} </span>\n                </div>\n\n                <span class=\"glyphicon glyphicon-phone-alt\"></span>\n                <span class=\"phone-holder\"> {{contact.phone}} </span>\n\n\n                <div class=\"delete-holder\">\n\n                    <button disabled type=\"button\" class=\"btn btn-warning\">Edit Contact</button>\n\n                    <button (click)=\"deleteRecord(contact)\" type=\"button\" class=\"btn btn-danger\">Delete</button>\n                </div>\n\n            </li>\n        </ul>\n    </div>\n</div>"
 
 /***/ }),
 
 /***/ 147:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-holder\">\n    <form action=\"\" method=\"POST\" role=\"form\">\n        <legend>Add Record</legend>\n\n        <div class=\"form-group\">\n            <label for=\"\">Name</label>\n            <input type=\"text\" class=\"form-control\" #name>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"\">Phone</label>\n            <input type=\"text\" class=\"form-control\" #phone>\n        </div>\n\n        <div class=\"text-right\">\n            <button (click)=\"postRecord(name.value, phone.value)\" class=\"btn btn-primary \">Add Record</button>\n        </div>\n    </form>\n</div>"
+module.exports = "<div class=\"form-holder\">\n    <form action=\"\" method=\"POST\" role=\"form\">\n        <legend>Add Record</legend>\n\n        <div class=\"form-group\">\n            <label for=\"\">Name</label>\n            <input type=\"text\" class=\"form-control\" name=\"person\" [(ngModel)]=\"person\">\n        </div>\n\n        <!--============================================-->\n\n        <div class=\"form-group\">\n            <label for=\"\">City</label>\n            <select disabled name=\"\" class=\"form-control\">\n                <option value=\"\">In progress</option>\n            </select>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"\">Occupation</label>\n            <select disabled name=\"\" class=\"form-control\">\n                <option value=\"\">In progress</option>\n            </select>\n        </div>\n\n        <!--============================================-->\n\n        <div class=\"form-group\">\n            <label for=\"\">Phone</label>\n            <input type=\"text\" class=\"form-control\" name=\"phone\" [(ngModel)]=\"phone\">\n        </div>\n\n        <div class=\"text-right\">\n            <button (click)=\"postRecord(person, phone)\" class=\"btn btn-primary \">Add Record</button>\n        </div>\n    </form>\n</div>"
 
 /***/ }),
 
@@ -120,13 +120,22 @@ var DataService = (function () {
         this.getData().subscribe(function (res) {
             for (var key in res) {
                 //console.log(key, res[key].person);
-                _this.contacts.unshift({ person: res[key].person, phone: res[key].phone });
+                _this.contacts.unshift({
+                    id: key,
+                    person: res[key].person,
+                    phone: res[key].phone,
+                    city: res[key].city,
+                    occupation: res[key].occupation
+                });
             }
         });
         console.log(this.contacts);
     };
     DataService.prototype.postData = function (record) {
         return this._http.post(this.fbUrl, record, httpOptions);
+    };
+    DataService.prototype.deleteContact = function (contact) {
+        return this._http.delete("https://phonebook-f6ac7.firebaseio.com/phonebook/" + contact.id + ".json", httpOptions);
     };
     return DataService;
 }());
@@ -290,6 +299,20 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.onNewContact = function (contact) {
         this.contactsList.unshift(contact);
     };
+    DashboardComponent.prototype.deleteRecord = function (contact) {
+        var _this = this;
+        if (confirm("You will delete " + contact.person + ".\nAre you sure?")) {
+            this._dataServise.deleteContact(contact).subscribe(function () {
+                _this.contactsList.forEach(function (cur, index) {
+                    if (contact.id === cur.id) {
+                        _this.contactsList.splice(index, 1);
+                    }
+                });
+            });
+        }
+        console.log("Deleted Contact: ");
+        console.log(contact);
+    };
     return DashboardComponent;
 }());
 DashboardComponent = __decorate([
@@ -328,22 +351,25 @@ var FormComponent = (function () {
     function FormComponent(_dataService) {
         this._dataService = _dataService;
         this.newContact = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* EventEmitter */]();
+        this.person = "";
+        this.phone = "";
     }
     FormComponent.prototype.ngOnInit = function () {
     };
     FormComponent.prototype.postRecord = function (person, phone) {
         var _this = this;
-        if (!person || !phone) {
+        if (this.person === "" || this.phone === "") {
             alert("Please add Name and Phone");
         }
         else {
             this._dataService.postData({ person: person, phone: phone }).subscribe(function (post) {
                 //console.log(post);
-                //this._dataService.initData();
-                _this.newContact.emit({ person: person, phone: phone });
+                var newId = post[Object.keys(post)[0]];
+                _this.newContact.emit({ id: newId, person: person, phone: phone });
             });
-            console.log(person, phone);
         }
+        this.person = "";
+        this.phone = "";
     };
     return FormComponent;
 }());

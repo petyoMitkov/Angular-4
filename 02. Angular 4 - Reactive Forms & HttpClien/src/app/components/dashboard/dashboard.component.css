@@ -1,15 +1,63 @@
 .dashboard {
-    border: 10px solid rgb(110, 181, 209);
+    border: 8px solid rgb(110, 181, 209);
     border-radius: 10px;
     margin-top: 10px;
     padding: 20px 20px 150px 20px;
     animation: fadeInDashboard 1.2s;
 }
 
+.btn:active,
+.btn:focus {
+    outline: none;
+}
+
 .header {
     text-align: center;
     margin-bottom: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
+
+
+/* ======= Contacts List =======*/
+
+.person-name {
+    line-height: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.city-and-occupation {
+    display: flex;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 10px 0 10px 0;
+}
+
+.city-and-occupation :first-child {
+    flex: 1;
+}
+
+.city-and-occupation span {
+    flex: 2;
+}
+
+.glyphicon-phone-alt {
+    font-size: 1.2em;
+    color: rgb(102, 102, 102);
+    margin-right: 10px;
+}
+
+.phone-holder {
+    font-size: 1.4em;
+}
+
+.delete-holder {
+    padding: 5px 0 5px 0;
+    text-align: right;
+}
+
+
+/* ================ Animation ==================== */
 
 .add-new-item,
 .list-group-item {

@@ -12,6 +12,8 @@ export class FormComponent implements OnInit {
     contact: Contact;
     @Output() newContact: EventEmitter<Contact> = new EventEmitter();
 
+    person: string = "";
+    phone: string = ""
 
     constructor(private _dataService: DataService) { }
 
@@ -19,16 +21,18 @@ export class FormComponent implements OnInit {
     }
 
     postRecord(person, phone) {
-       if (!person || !phone) {
+        if (this.person === "" || this.phone === "") {
             alert("Please add Name and Phone");
         } else {
-            this._dataService.postData({ person, phone } as Contact).subscribe( post => {
+            this._dataService.postData({ person, phone } as Contact).subscribe(post => {
                 //console.log(post);
-                //this._dataService.initData();
-                this.newContact.emit({person: person, phone: phone});
+                let newId = post[Object.keys(post)[0]];
+
+                this.newContact.emit({ id: newId, person: person, phone: phone });
             });
-            console.log(person, phone);
         }
+        this.person = "";
+        this.phone = "";
     }
 
 }

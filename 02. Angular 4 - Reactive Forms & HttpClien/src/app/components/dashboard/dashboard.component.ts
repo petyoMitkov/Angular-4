@@ -23,5 +23,19 @@ export class DashboardComponent implements OnInit {
         this.contactsList.unshift(contact);
     }
 
+    deleteRecord(contact: Contact) {
+        if (confirm(`You will delete ${contact.person}.\nAre you sure?`)) {
+            this._dataServise.deleteContact(contact).subscribe(() => {
+                this.contactsList.forEach((cur, index) => {
+                    if (contact.id === cur.id) {
+                        this.contactsList.splice(index,1);
+                    }
+                })
+            });
+        }
+        console.log(`Deleted Contact: `);
+        console.log(contact);
+    }
+
 
 }

@@ -4,16 +4,34 @@
 
         <div class="form-group">
             <label for="">Name</label>
-            <input type="text" class="form-control" #name>
+            <input type="text" class="form-control" name="person" [(ngModel)]="person">
+        </div>
+
+        <!--============================================-->
+
+        <div class="form-group">
+            <label for="">City</label>
+            <select disabled name="" class="form-control">
+                <option value="">In progress</option>
+            </select>
         </div>
 
         <div class="form-group">
+            <label for="">Occupation</label>
+            <select disabled name="" class="form-control">
+                <option value="">In progress</option>
+            </select>
+        </div>
+
+        <!--============================================-->
+
+        <div class="form-group">
             <label for="">Phone</label>
-            <input type="text" class="form-control" #phone>
+            <input type="text" class="form-control" name="phone" [(ngModel)]="phone">
         </div>
 
         <div class="text-right">
-            <button (click)="postRecord(name.value, phone.value)" class="btn btn-primary ">Add Record</button>
+            <button (click)="postRecord(person, phone)" class="btn btn-primary ">Add Record</button>
         </div>
     </form>
 </div>

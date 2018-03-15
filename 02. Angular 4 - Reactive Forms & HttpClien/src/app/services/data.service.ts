@@ -28,7 +28,14 @@ export class DataService {
         this.getData().subscribe(res => {
             for (var key in res) {
                 //console.log(key, res[key].person);
-                this.contacts.unshift({ person: res[key].person, phone: res[key].phone})
+                this.contacts.unshift({
+                    id: key,
+                    person: res[key].person,
+                    phone: res[key].phone,
+                    city: res[key].city,
+                    occupation: res[key].occupation
+
+                })
             }
         })
         console.log(this.contacts);
@@ -36,7 +43,10 @@ export class DataService {
 
     postData(record: Contact): Observable<Contact> {
         return this._http.post<Contact>(this.fbUrl, record, httpOptions);
+    }
 
+    deleteContact(contact: Contact): Observable<Contact> {
+       return this._http.delete<Contact>(`https://phonebook-f6ac7.firebaseio.com/phonebook/${contact.id}.json`, httpOptions);
     }
 
 
