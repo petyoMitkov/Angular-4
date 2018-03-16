@@ -12,27 +12,43 @@ export class FormComponent implements OnInit {
     contact: Contact;
     @Output() newContact: EventEmitter<Contact> = new EventEmitter();
 
-    person: string = "";
-    phone: string = ""
+
+    selectCityList: string[] = [
+        "-- Select City --",
+        "Sofia",
+        "Vratsa",
+        "London",
+        "New York"
+    ];
+
+    selectOccupationList: string[] = [
+        "-- Select Occupation --",
+        "Angular Developer",
+        "Full Stack Developer",
+        "Node.js Developer"
+    ];
 
     constructor(private _dataService: DataService) { }
 
     ngOnInit() {
     }
 
-    postRecord(person, phone) {
-        if (this.person === "" || this.phone === "") {
+    postRecord(person, city, occupation, phone) {
+        if (person === "" || phone === "") {
             alert("Please add Name and Phone");
         } else {
-            this._dataService.postData({ person, phone } as Contact).subscribe(post => {
+            this._dataService.postData({ person, city, occupation, phone } as Contact).subscribe(post => {
                 //console.log(post);
                 let newId = post[Object.keys(post)[0]];
 
-                this.newContact.emit({ id: newId, person: person, phone: phone });
+                this.newContact.emit({
+                    id: newId,
+                    person: person,
+                    city: city,
+                    occupation: occupation,
+                    phone: phone });
             });
         }
-        this.person = "";
-        this.phone = "";
     }
 
 }
