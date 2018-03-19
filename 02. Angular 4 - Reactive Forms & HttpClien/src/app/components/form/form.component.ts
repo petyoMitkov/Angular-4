@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { FormsModule, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { DataService } from '../../services/data.service';
 import { Contact } from '../../models/contact-interface';
 
 @Component({
@@ -14,7 +15,6 @@ export class FormComponent implements OnInit {
 
 
     selectCityList: string[] = [
-        "-- Select City --",
         "Sofia",
         "Vratsa",
         "London",
@@ -22,33 +22,65 @@ export class FormComponent implements OnInit {
     ];
 
     selectOccupationList: string[] = [
-        "-- Select Occupation --",
         "Angular Developer",
         "Full Stack Developer",
         "Node.js Developer"
     ];
 
-    constructor(private _dataService: DataService) { }
+    addForm: FormGroup;
+
+    constructor(private _dataService: DataService, private _formBilder: FormBuilder) { }
 
     ngOnInit() {
+        this.createFormValidation();
     }
 
-    postRecord(person, city, occupation, phone) {
-        if (person === "" || phone === "") {
-            alert("Please add Name and Phone");
-        } else {
-            this._dataService.postData({ person, city, occupation, phone } as Contact).subscribe(post => {
+    postRecord(formData) {
+        let contact = {
+            person: formData.name,
+            city: formData.city,
+            occupation: formData.occupation,
+            phone: formData.phone
+        };
+
+        this._dataService.postData(contact).subscribe(
+            post => {
                 //console.log(post);
                 let newId = post[Object.keys(post)[0]];
 
                 this.newContact.emit({
                     id: newId,
-                    person: person,
-                    city: city,
-                    occupation: occupation,
-                    phone: phone });
-            });
-        }
+                    person: contact.person,
+                    city: contact.city,
+                    occupation: contact.occupation,
+                    phone: contact.phone
+                });
+            },
+            error => alert("Some Error occurred. Check your internet connection."),
+
+            // Reset Form
+            () =>  {
+                this.createFormValidation()
+            }
+        );
+
+
+    }
+
+    createFormValidation() {
+        this.addForm = this._formBilder.group({
+            "name": ["", Validators.compose([
+                Validators.required,
+                Validators.minLength(3),
+                Validators.pattern("[A-Z]* *[ A-Z]+")
+            ])],
+            "city": ["", Validators.required],
+            "occupation": ["", Validators.required],
+            "phone": ["", Validators.compose([
+                Validators.required,
+                Validators.minLength(6)
+            ])]
+        });
     }
 
 }

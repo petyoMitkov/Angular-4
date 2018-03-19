@@ -44,7 +44,7 @@ exports = module.exports = __webpack_require__(22)();
 
 
 // module
-exports.push([module.i, ".form-holder {\r\n    /*border: 1px solid rgb(219, 219, 219);*/\r\n    border-radius: 10px;\r\n    margin: auto;\r\n    margin-bottom: 30px;\r\n    padding: 20px;\r\n    box-shadow: 2px 2px 8px rgb(53, 53, 53);\r\n    overflow: hidden;\r\n}\r\n\r\nlegend {\r\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif\r\n}", ""]);
+exports.push([module.i, ".form-holder {\r\n    /*border: 1px solid rgb(219, 219, 219);*/\r\n    border-radius: 10px;\r\n    margin: auto;\r\n    margin-bottom: 30px;\r\n    padding: 20px;\r\n    box-shadow: 2px 2px 8px rgb(53, 53, 53);\r\n    overflow: hidden;\r\n}\r\n\r\nlegend {\r\n    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif\r\n}\r\n\r\n\r\n/* ======= Form Validations Styles ======== */\r\n\r\n.form-control.ng-valid.ng-touched {\r\n    border: 1px solid rgb(107, 216, 44) !important;\r\n}\r\n\r\n.form-control.ng-touched.ng-invalid {\r\n    border: 1px solid red !important;\r\n}\r\n\r\n.span-invalid {\r\n    display: inline-block;\r\n    width: 100%;\r\n    position: relative;\r\n    top: -5px;\r\n    padding-top: 5px;\r\n    padding-bottom: 5px;\r\n    padding-left: 15px;\r\n    border-bottom-left-radius: 5px;\r\n    border-bottom-right-radius: 5px;\r\n    background: red;\r\n    color: white;\r\n}\r\n\r\n.green {\r\n    color: green;\r\n}", ""]);
 
 // exports
 
@@ -71,24 +71,24 @@ module.exports = "<div class=\"row dashboard\">\n    <div class=\"col-xs-12 col-
 /***/ 147:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-holder\">\n    <form action=\"\" (submit)=\"postRecord(person.value, city.value, occupation.value, phone.value)\" novalidate>\n        <legend>Add Record</legend>\n\n        <div class=\"form-group\">\n            <label for=\"\">Name</label>\n            <input #person type=\"text\" class=\"form-control\">\n        </div>\n\n        <!--============================================-->\n\n        <div class=\"form-group\">\n            <label for=\"\">City</label>\n            <select #city name=\"\" class=\"form-control\">\n                <option *ngFor=\"let city of selectCityList\" value=\"{{city}}\">\n                    {{city}}\n                </option>\n            </select>\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"\">Occupation</label>\n            <select #occupation class=\"form-control\">\n                <option *ngFor=\"let occupation of selectOccupationList\" value=\"{{occupation}}\">\n                    {{occupation}}\n                </option>\n            </select>\n        </div>\n\n        <!--============================================-->\n\n        <div class=\"form-group\">\n            <label for=\"\">Phone</label>\n            <input #phone type=\"text\" class=\"form-control\">\n        </div>\n\n        <div class=\"text-right\">\n            <button type=\"submit\" class=\"btn btn-primary \">Add Record</button>\n        </div>\n    </form>\n</div>"
+module.exports = "<div class=\"form-holder\">\n    <form [formGroup]=\"addForm\" (ngSubmit)=\"postRecord(addForm.value)\" novalidate>\n        <legend>Add Record</legend>\n\n        <div class=\"form-group\">\n            <label for=\"\">Name <small class=\"green\">required, min 3 char,only capital letters</small></label>\n            <input type=\"text\" class=\"form-control\" formControlName=\"name\">\n            <span *ngIf=\"addForm.controls['name'].pristine && addForm.controls['name'].touched\n                || addForm.controls['name'].value ==='' && addForm.controls['name'].touched\" class=\"span-invalid\">\n                Name is required.\n            </span>\n            <span *ngIf=\"addForm.controls['name'].hasError('minlength')\" class=\"span-invalid\">\n                Min length 3 char\n            </span>\n            <span *ngIf=\"addForm.controls['name'].errors?.pattern && !addForm.controls['name'].hasError('minlength')\" class=\"span-invalid\">\n                Only capital letters: IVAN IVANOV\n            </span>\n        </div>\n\n        <!--============================================-->\n\n        <div class=\"form-group\">\n            <label for=\"\">City <small class=\"green\">required</small></label>\n            <select name=\"\" class=\"form-control\" formControlName=\"city\">\n                <option value=\"\" disabled=\"true\" [selected]=\"true\">--please select--</option>\n                <option *ngFor=\"let city of selectCityList\" value=\"{{city}}\">\n                    {{city}}\n                </option>\n            </select>\n            <span *ngIf=\"addForm.controls['city'].pristine && addForm.controls['city'].touched\" class=\"span-invalid\">\n                City is required.\n            </span>\n\n        </div>\n\n        <div class=\"form-group\">\n            <label for=\"\">Occupation <small class=\"green\">required</small></label>\n            <select class=\"form-control\" formControlName=\"occupation\">\n                <option value=\"\" disabled=\"true\" [selected]=\"true\">--please select--</option>\n                <option *ngFor=\"let occupation of selectOccupationList\" value=\"{{occupation}}\">\n                    {{occupation}}\n                </option>\n            </select>\n            <span *ngIf=\"addForm.controls['occupation'].pristine && addForm.controls['occupation'].touched\" class=\"span-invalid\">\n                Occupation is required.\n            </span>\n        </div>\n\n        <!--============================================-->\n\n        <div class=\"form-group\">\n            <label for=\"\">Phone <small>required, min 6 numbers, must have + or 00 fore cuntry code</small></label>\n            <input type=\"phone\" class=\"form-control\" formControlName=\"phone\">\n            <span *ngIf=\"addForm.controls['phone'].pristine && addForm.controls['phone'].touched\" class=\"span-invalid\">\n                City is required.\n            </span>\n        </div>\n\n        <div class=\"text-right\">\n            <button type=\"submit\" class=\"btn btn-primary \" [disabled]=\"!addForm.valid\">Add Record</button>\n        </div>\n    </form>\n</div>"
 
 /***/ }),
 
 /***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(78);
+module.exports = __webpack_require__(79);
 
 
 /***/ }),
 
-/***/ 32:
+/***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(51);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -149,7 +149,7 @@ var _a;
 
 /***/ }),
 
-/***/ 77:
+/***/ 78:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -158,12 +158,12 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 77;
+webpackEmptyContext.id = 78;
 
 
 /***/ }),
 
-/***/ 78:
+/***/ 79:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -219,13 +219,13 @@ AppComponent = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_dashboard_dashboard_component__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_data_service__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_data_service__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_form_form_component__ = __webpack_require__(87);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -234,6 +234,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -257,7 +258,8 @@ AppModule = __decorate([
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClientModule */]
+            __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClientModule */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* ReactiveFormsModule */]
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_6__services_data_service__["a" /* DataService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
@@ -273,7 +275,7 @@ AppModule = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(33);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -334,7 +336,8 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_data_service__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_data_service__ = __webpack_require__(33);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -347,44 +350,65 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var FormComponent = (function () {
-    function FormComponent(_dataService) {
+    function FormComponent(_dataService, _formBilder) {
         this._dataService = _dataService;
+        this._formBilder = _formBilder;
         this.newContact = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* EventEmitter */]();
         this.selectCityList = [
-            "-- Select City --",
             "Sofia",
             "Vratsa",
             "London",
             "New York"
         ];
         this.selectOccupationList = [
-            "-- Select Occupation --",
             "Angular Developer",
             "Full Stack Developer",
             "Node.js Developer"
         ];
     }
     FormComponent.prototype.ngOnInit = function () {
+        this.createFormValidation();
     };
-    FormComponent.prototype.postRecord = function (person, city, occupation, phone) {
+    FormComponent.prototype.postRecord = function (formData) {
         var _this = this;
-        if (person === "" || phone === "") {
-            alert("Please add Name and Phone");
-        }
-        else {
-            this._dataService.postData({ person: person, city: city, occupation: occupation, phone: phone }).subscribe(function (post) {
-                //console.log(post);
-                var newId = post[Object.keys(post)[0]];
-                _this.newContact.emit({
-                    id: newId,
-                    person: person,
-                    city: city,
-                    occupation: occupation,
-                    phone: phone
-                });
+        var contact = {
+            person: formData.name,
+            city: formData.city,
+            occupation: formData.occupation,
+            phone: formData.phone
+        };
+        this._dataService.postData(contact).subscribe(function (post) {
+            //console.log(post);
+            var newId = post[Object.keys(post)[0]];
+            _this.newContact.emit({
+                id: newId,
+                person: contact.person,
+                city: contact.city,
+                occupation: contact.occupation,
+                phone: contact.phone
             });
-        }
+        }, function (error) { return alert("Some Error occurred. Check your internet connection."); }, 
+        // Reset Form
+        function () {
+            _this.createFormValidation();
+        });
+    };
+    FormComponent.prototype.createFormValidation = function () {
+        this.addForm = this._formBilder.group({
+            "name": ["", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].compose([
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].minLength(3),
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].pattern("[A-Z]* *[ A-Z]+")
+                ])],
+            "city": ["", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
+            "occupation": ["", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
+            "phone": ["", __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].compose([
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].minLength(6)
+                ])]
+        });
     };
     return FormComponent;
 }());
@@ -398,10 +422,10 @@ FormComponent = __decorate([
         template: __webpack_require__(147),
         styles: [__webpack_require__(144)]
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_data_service__["a" /* DataService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_data_service__["a" /* DataService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormBuilder */]) === "function" && _c || Object])
 ], FormComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=form.component.js.map
 
 /***/ }),

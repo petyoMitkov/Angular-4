@@ -11,3 +11,32 @@
 legend {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
+
+
+/* ======= Form Validations Styles ======== */
+
+.form-control.ng-valid.ng-touched {
+    border: 1px solid rgb(107, 216, 44) !important;
+}
+
+.form-control.ng-touched.ng-invalid {
+    border: 1px solid red !important;
+}
+
+.span-invalid {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    top: -5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: red;
+    color: white;
+}
+
+.green {
+    color: green;
+}

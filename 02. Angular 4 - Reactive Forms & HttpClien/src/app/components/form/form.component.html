@@ -1,41 +1,63 @@
 <div class="form-holder">
-    <form action="" (submit)="postRecord(person.value, city.value, occupation.value, phone.value)" novalidate>
+    <form [formGroup]="addForm" (ngSubmit)="postRecord(addForm.value)" novalidate>
         <legend>Add Record</legend>
 
         <div class="form-group">
-            <label for="">Name</label>
-            <input #person type="text" class="form-control">
+            <label for="">Name <small class="green">required, min 3 char,only capital letters</small></label>
+            <input type="text" class="form-control" formControlName="name">
+            <span *ngIf="addForm.controls['name'].pristine && addForm.controls['name'].touched
+                || addForm.controls['name'].value ==='' && addForm.controls['name'].touched" class="span-invalid">
+                Name is required.
+            </span>
+            <span *ngIf="addForm.controls['name'].hasError('minlength')" class="span-invalid">
+                Min length 3 char
+            </span>
+            <span *ngIf="addForm.controls['name'].errors?.pattern && !addForm.controls['name'].hasError('minlength')" class="span-invalid">
+                Only capital letters: IVAN IVANOV
+            </span>
         </div>
 
         <!--============================================-->
 
         <div class="form-group">
-            <label for="">City</label>
-            <select #city name="" class="form-control">
+            <label for="">City <small class="green">required</small></label>
+            <select name="" class="form-control" formControlName="city">
+                <option value="" disabled="true" [selected]="true">--please select--</option>
                 <option *ngFor="let city of selectCityList" value="{{city}}">
                     {{city}}
                 </option>
             </select>
+            <span *ngIf="addForm.controls['city'].pristine && addForm.controls['city'].touched" class="span-invalid">
+                City is required.
+            </span>
+
         </div>
 
         <div class="form-group">
-            <label for="">Occupation</label>
-            <select #occupation class="form-control">
+            <label for="">Occupation <small class="green">required</small></label>
+            <select class="form-control" formControlName="occupation">
+                <option value="" disabled="true" [selected]="true">--please select--</option>
                 <option *ngFor="let occupation of selectOccupationList" value="{{occupation}}">
                     {{occupation}}
                 </option>
             </select>
+            <span *ngIf="addForm.controls['occupation'].pristine && addForm.controls['occupation'].touched" class="span-invalid">
+                Occupation is required.
+            </span>
         </div>
 
         <!--============================================-->
 
         <div class="form-group">
-            <label for="">Phone</label>
-            <input #phone type="text" class="form-control">
+            <label for="">Phone <small>required, min 6 numbers, must have + or 00 fore cuntry code</small></label>
+            <input type="phone" class="form-control" formControlName="phone">
+            <span *ngIf="addForm.controls['phone'].pristine && addForm.controls['phone'].touched" class="span-invalid">
+                City is required.
+            </span>
         </div>
 
         <div class="text-right">
-            <button type="submit" class="btn btn-primary ">Add Record</button>
+            <button type="submit" class="btn btn-primary " [disabled]="!addForm.valid">Add Record</button>
         </div>
     </form>
 </div>
