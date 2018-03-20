@@ -59,12 +59,10 @@ export class FormComponent implements OnInit {
             error => alert("Some Error occurred. Check your internet connection."),
 
             // Reset Form
-            () =>  {
+            () => {
                 this.createFormValidation()
             }
         );
-
-
     }
 
     createFormValidation() {
@@ -78,9 +76,34 @@ export class FormComponent implements OnInit {
             "occupation": ["", Validators.required],
             "phone": ["", Validators.compose([
                 Validators.required,
-                Validators.minLength(6)
+                Validators.minLength(6),
+                this.phoneValidatorStart,
+                this.phoneValidatorOnlyNumbers
             ])]
         });
     }
 
+    // + or 00
+    phoneValidatorStart(control: FormControl) {
+        let phoneInput = control.value.trim();
+
+        if (phoneInput[0] === "+" || (phoneInput[0] === "0" && phoneInput[1] === "0")) {
+           return null;
+        }
+        return { 'phoneValidatorStart': { error: true }};
+    }
+
+    // Only Numbers
+    phoneValidatorOnlyNumbers(control: FormControl) {
+        let phoneInput = control.value.trim();
+        let regEx =/^(\+|00)+[0-9]+$/;
+
+        //console.log(regEx.test(phoneInput));
+        if (regEx.test(phoneInput)) {
+            return null;
+        }
+        return { 'phoneValidatorOnlyNumbers':  {error: true}}
+    }
+
 }
+

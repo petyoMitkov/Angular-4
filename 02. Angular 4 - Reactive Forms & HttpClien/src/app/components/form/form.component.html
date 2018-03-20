@@ -2,25 +2,25 @@
     <form [formGroup]="addForm" (ngSubmit)="postRecord(addForm.value)" novalidate>
         <legend>Add Record</legend>
 
+        <!-- Name -->
         <div class="form-group">
-            <label for="">Name <small class="green">required, min 3 char,only capital letters</small></label>
+            <label for=""><span>Name</span> <small class="input-info">required, min 3 chars,only capital letters</small></label>
             <input type="text" class="form-control" formControlName="name">
             <span *ngIf="addForm.controls['name'].pristine && addForm.controls['name'].touched
                 || addForm.controls['name'].value ==='' && addForm.controls['name'].touched" class="span-invalid">
                 Name is required.
             </span>
             <span *ngIf="addForm.controls['name'].hasError('minlength')" class="span-invalid">
-                Min length 3 char
+                Min length 3 chars
             </span>
             <span *ngIf="addForm.controls['name'].errors?.pattern && !addForm.controls['name'].hasError('minlength')" class="span-invalid">
                 Only capital letters: IVAN IVANOV
             </span>
         </div>
 
-        <!--============================================-->
-
+        <!-- City -->
         <div class="form-group">
-            <label for="">City <small class="green">required</small></label>
+            <label for=""><span>City</span> <small class="input-info">required</small></label>
             <select name="" class="form-control" formControlName="city">
                 <option value="" disabled="true" [selected]="true">--please select--</option>
                 <option *ngFor="let city of selectCityList" value="{{city}}">
@@ -30,11 +30,11 @@
             <span *ngIf="addForm.controls['city'].pristine && addForm.controls['city'].touched" class="span-invalid">
                 City is required.
             </span>
-
         </div>
 
+        <!-- Occupation -->
         <div class="form-group">
-            <label for="">Occupation <small class="green">required</small></label>
+            <label for=""><span>Occupation</span> <small class="input-info">required</small></label>
             <select class="form-control" formControlName="occupation">
                 <option value="" disabled="true" [selected]="true">--please select--</option>
                 <option *ngFor="let occupation of selectOccupationList" value="{{occupation}}">
@@ -46,18 +46,32 @@
             </span>
         </div>
 
-        <!--============================================-->
-
+        <!-- Phone -->
         <div class="form-group">
-            <label for="">Phone <small>required, min 6 numbers, must have + or 00 fore cuntry code</small></label>
-            <input type="phone" class="form-control" formControlName="phone">
+            <label for=""><span>Phone</span> <small class="input-info">required, min 6 numbers, start with + or 00, onliy numbers</small></label>
+            <input type="tel" class="form-control" formControlName="phone">
             <span *ngIf="addForm.controls['phone'].pristine && addForm.controls['phone'].touched" class="span-invalid">
-                City is required.
+                Phone is required.
+            </span>
+            <span *ngIf="addForm.controls['phone'].hasError('minlength')" class="span-invalid">
+                Min length is 6 chars
+            </span>
+            <span *ngIf="addForm.controls['phone'].errors?.phoneValidatorStart
+                && !addForm.controls['phone'].hasError('minlength')
+                && !addForm.controls['phone'].pristine" class="span-invalid">
+                Start with "+" or "00"
+                for example: +35988565487
+            </span>
+            <span *ngIf="addForm.controls['phone'].errors?.phoneValidatorOnlyNumbers
+                && !addForm.controls['phone'].hasError('minlength')
+                && !addForm.controls['phone'].pristine
+                && !addForm.controls['phone'].errors?.phoneValidatorStart" class="span-invalid ">
+                Use Only Numbers!
             </span>
         </div>
 
-        <div class="text-right">
-            <button type="submit" class="btn btn-primary " [disabled]="!addForm.valid">Add Record</button>
+        <div class="text-right ">
+            <button type="submit " class="btn btn-primary " [disabled]="!addForm.valid ">Add Record</button>
         </div>
     </form>
 </div>

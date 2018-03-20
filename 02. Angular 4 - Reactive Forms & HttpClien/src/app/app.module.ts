@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DataService } from './services/data.service';
 import { FormComponent } from './components/form/form.component';
+import { EditContactComponent } from './components/edit-contact/edit-contact.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    FormComponent
+    FormComponent,
+    EditContactComponent
   ],
   imports: [
     BrowserModule,

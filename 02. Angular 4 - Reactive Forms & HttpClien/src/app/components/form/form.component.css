@@ -23,6 +23,15 @@ legend {
     border: 1px solid red !important;
 }
 
+label {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+label span {
+    flex: 1;
+}
+
 .span-invalid {
     display: inline-block;
     width: 100%;
@@ -35,8 +44,11 @@ legend {
     border-bottom-right-radius: 5px;
     background: red;
     color: white;
+    z-index: -1;
 }
 
-.green {
-    color: green;
+.input-info {
+    color: rgb(158, 158, 158);
+    margin: auto;
+    font-size: 0.8em;
 }
