@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { DataService } from '../../services/data.service';
@@ -12,6 +12,7 @@ import { Contact } from '../../models/contact-interface';
 export class FormComponent implements OnInit {
     contact: Contact;
     @Output() newContact: EventEmitter<Contact> = new EventEmitter();
+    @Input() editValue;
 
 
     selectCityList: string[] = [
@@ -28,11 +29,14 @@ export class FormComponent implements OnInit {
     ];
 
     addForm: FormGroup;
+    editForm: FormGroup;
+
 
     constructor(private _dataService: DataService, private _formBilder: FormBuilder) { }
 
     ngOnInit() {
         this.createFormValidation();
+        this.createFormValidationEdit();
     }
 
     postRecord(formData) {
@@ -65,6 +69,10 @@ export class FormComponent implements OnInit {
         );
     }
 
+    editRecord() {
+
+    }
+
     createFormValidation() {
         this.addForm = this._formBilder.group({
             "name": ["", Validators.compose([
@@ -83,7 +91,25 @@ export class FormComponent implements OnInit {
         });
     }
 
-    // + or 00
+    createFormValidationEdit() {
+        this.editForm = this._formBilder.group({
+            "name": [`${this.editValue.person}`, Validators.compose([
+                Validators.required,
+                Validators.minLength(3),
+                Validators.pattern("[A-Z]* *[ A-Z]+")
+            ])],
+            "city": ["", Validators.required],
+            "occupation": ["", Validators.required],
+            "phone": ["", Validators.compose([
+                Validators.required,
+                Validators.minLength(6),
+                this.phoneValidatorStart,
+                this.phoneValidatorOnlyNumbers
+            ])]
+        });
+    }
+
+    // Custrom Validation + or 00
     phoneValidatorStart(control: FormControl) {
         let phoneInput = control.value.trim();
 
@@ -93,7 +119,7 @@ export class FormComponent implements OnInit {
         return { 'phoneValidatorStart': { error: true }};
     }
 
-    // Only Numbers
+    // Custrom Validation Only Numbers
     phoneValidatorOnlyNumbers(control: FormControl) {
         let phoneInput = control.value.trim();
         let regEx =/^(\+|00)+[0-9]+$/;

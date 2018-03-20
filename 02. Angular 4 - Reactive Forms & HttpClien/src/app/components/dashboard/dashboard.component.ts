@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
 import { Contact } from '../../models/contact-interface';
@@ -10,6 +10,13 @@ import { Contact } from '../../models/contact-interface';
 })
 export class DashboardComponent implements OnInit {
     contactsList: Contact[] = [];
+    editValue: Contact = {
+        id: "",
+        person: "",
+        city: "",
+        occupation: "",
+        phone: ""
+    }
 
     constructor(private _dataServise: DataService) { }
 
@@ -35,6 +42,12 @@ export class DashboardComponent implements OnInit {
         //}
         console.log(`Deleted Contact: `);
         console.log(contact);
+    }
+
+    edit(contact) {
+       this.editValue = contact;
+
+
     }
 
 

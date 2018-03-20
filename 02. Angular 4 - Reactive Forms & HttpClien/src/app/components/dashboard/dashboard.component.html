@@ -5,7 +5,8 @@
         </h1>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-lg-offset-1 ">
-        <app-form (newContact)="onNewContact($event)"></app-form>
+        <app-form (newContact)="onNewContact($event)" [editValue]="editValue">
+        </app-form>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
         <ul class="list-group">
@@ -22,7 +23,7 @@
 
                 <div class="delete-holder">
 
-                    <button disabled type="button" class="btn btn-warning">Edit Contact</button>
+                    <button #ptext (keyup)="0" (click)="edit(contact)" type="button" class="btn btn-warning">Edit Contact</button>
 
                     <button (click)="deleteRecord(contact)" type="button" class="btn btn-danger">Delete</button>
                 </div>

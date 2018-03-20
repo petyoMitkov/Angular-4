@@ -32,6 +32,11 @@ label span {
     flex: 1;
 }
 
+input,
+select {
+    z-index: 2;
+}
+
 .span-invalid {
     display: inline-block;
     width: 100%;
@@ -44,11 +49,31 @@ label span {
     border-bottom-right-radius: 5px;
     background: red;
     color: white;
-    z-index: -1;
+    z-index: 1;
 }
 
 .input-info {
     color: rgb(158, 158, 158);
     margin: auto;
     font-size: 0.8em;
+}
+
+
+/* ============ Add Contact Form ============== */
+
+.add-contact-form {
+    display: none;
+}
+
+
+/* ============ Edit Contact Form ============== */
+
+.edit-contact-form {
+    display: none;
+}
+
+.red {
+    background: rgb(213, 241, 187);
+    z-index: -20;
+    display: block;
 }
