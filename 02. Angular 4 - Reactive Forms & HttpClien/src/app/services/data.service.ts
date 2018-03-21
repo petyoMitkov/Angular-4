@@ -46,7 +46,13 @@ export class DataService {
     }
 
     deleteContact(contact: Contact): Observable<Contact> {
-       return this._http.delete<Contact>(`https://phonebook-f6ac7.firebaseio.com/phonebook/${contact.id}.json`, httpOptions);
+        return this._http.delete<Contact>(`https://phonebook-f6ac7.firebaseio.com/phonebook/${contact.id}.json`, httpOptions);
+    }
+
+    updateContact(contact: Contact, id): Observable<Contact> {
+        let url = `https://phonebook-f6ac7.firebaseio.com/phonebook/${id}.json`;
+
+        return this._http.put<Contact>(url, contact, httpOptions);
     }
 
 

@@ -98,3 +98,36 @@ li {
         border: none;
     }
 }
+
+
+/*.form-stiky {
+    float: left;
+    position: fixed;
+    top: 10px;
+    left: 0px;
+    background: red;
+    width: 100vw;
+    height: 100vh;
+}*/
+
+.app-edit-form {
+    float: left;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.edit-form-bg {
+    background: red;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.edit-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+}

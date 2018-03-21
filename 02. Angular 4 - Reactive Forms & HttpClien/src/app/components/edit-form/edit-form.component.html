@@ -1,20 +1,20 @@
-<!-- Add Contact -->
-<div class="form-holder add-contact-form">
-    <form [formGroup]="addForm" (ngSubmit)="postRecord(addForm.value)" novalidate>
-        <legend>Add Record</legend>
+<!-- Edit Contact -->
+<div id="edit-form" class="form-holder edit-contact-form">
+    <form [formGroup]=" editForm " (ngSubmit)="editRecord(editForm.value, editValue.id) " novalidate>
+        <legend>Edit {{editValue.person}}</legend>
 
-        <!-- Name -->
+        <!-- Name - Person-->
         <div class="form-group">
             <label for=""><span>Name</span> <small class="input-info">required, min 3 chars,only capital letters</small></label>
-            <input type="text" class="form-control" formControlName="name">
-            <span *ngIf="addForm.controls['name'].pristine && addForm.controls['name'].touched
-                || addForm.controls['name'].value ==='' && addForm.controls['name'].touched" class="span-invalid">
+            <input type="text" class="form-control" formControlName="person">
+            <span *ngIf="editForm.controls['person'].pristine && editForm.controls['person'].touched
+                || editForm.controls['person'].value ==='' && editForm.controls['person'].touched" class="span-invalid">
                 Name is required.
             </span>
-            <span *ngIf="addForm.controls['name'].hasError('minlength')" class="span-invalid">
+            <span *ngIf="editForm.controls['person'].hasError('minlength')" class="span-invalid">
                 Min length 3 chars
             </span>
-            <span *ngIf="addForm.controls['name'].errors?.pattern && !addForm.controls['name'].hasError('minlength')" class="span-invalid">
+            <span *ngIf="editForm.controls['person'].errors?.pattern && !editForm.controls['person'].hasError('minlength')" class="span-invalid">
                 Only capital letters: IVAN IVANOV
             </span>
         </div>
@@ -28,7 +28,7 @@
                     {{city}}
                 </option>
             </select>
-            <span *ngIf="addForm.controls['city'].pristine && addForm.controls['city'].touched" class="span-invalid">
+            <span *ngIf="editForm.controls['city'].pristine && editForm.controls['city'].touched" class="span-invalid">
                 City is required.
             </span>
         </div>
@@ -42,7 +42,7 @@
                     {{occupation}}
                 </option>
             </select>
-            <span *ngIf="addForm.controls['occupation'].pristine && addForm.controls['occupation'].touched" class="span-invalid">
+            <span *ngIf="editForm.controls['occupation'].pristine && editForm.controls['occupation'].touched" class="span-invalid">
                 Occupation is required.
             </span>
         </div>
@@ -51,29 +51,31 @@
         <div class="form-group">
             <label for=""><span>Phone</span> <small class="input-info">required, min 6 numbers, start with + or 00, onliy numbers</small></label>
             <input type="tel" class="form-control" formControlName="phone">
-            <span *ngIf="addForm.controls['phone'].pristine && addForm.controls['phone'].touched" class="span-invalid">
+            <span *ngIf="editForm.controls['phone'].pristine && editForm.controls['phone'].touched" class="span-invalid">
                 Phone is required.
             </span>
-            <span *ngIf="addForm.controls['phone'].hasError('minlength')" class="span-invalid">
+            <span *ngIf="editForm.controls['phone'].hasError('minlength')" class="span-invalid">
                 Min length is 6 chars
             </span>
-            <span *ngIf="addForm.controls['phone'].errors?.phoneValidatorStart
-                && !addForm.controls['phone'].hasError('minlength')
-                && !addForm.controls['phone'].pristine" class="span-invalid">
+            <span *ngIf="editForm.controls['phone'].errors?.phoneValidatorStart
+                && !editForm.controls['phone'].hasError('minlength')
+                && !editForm.controls['phone'].pristine" class="span-invalid">
                 Start with "+" or "00"
                 for example: +35988565487
             </span>
-            <span *ngIf="addForm.controls['phone'].errors?.phoneValidatorOnlyNumbers
-                && !addForm.controls['phone'].hasError('minlength')
-                && !addForm.controls['phone'].pristine
-                && !addForm.controls['phone'].errors?.phoneValidatorStart" class="span-invalid ">
+            <span *ngIf="editForm.controls['phone'].errors?.phoneValidatorOnlyNumbers
+                && !editForm.controls['phone'].hasError('minlength')
+                && !editForm.controls['phone'].pristine
+                && !editForm.controls['phone'].errors?.phoneValidatorStart" class="span-invalid ">
                 Use Only Numbers!
             </span>
         </div>
 
         <div class="text-right ">
-            <button type="submit" class="btn btn-primary " [disabled]="!addForm.valid ">Add Record</button>
+            <button type="submit" class="btn btn-primary ">Save Changes</button>
+
         </div>
     </form>
-</div>
+    <button type="button" (click)="cancel()">Cancel</button>
 
+</div>

@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DataService } from './services/data.service';
 import { FormComponent } from './components/form/form.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    FormComponent
+    FormComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,

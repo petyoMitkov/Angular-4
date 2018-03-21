@@ -59,10 +59,11 @@ select {
 }
 
 
-/* ============ Add Contact Form ============== */
+/* ============ Edit Contact Form ============== */
 
-.add-contact-form {
-    /*display: none;*/
+.edit-contact-form {
+    background: rgb(207, 232, 241);
+    /* display: flex;*/
+    display: block;
+    z-index: 3;
 }
-
-

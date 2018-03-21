@@ -1,19 +1,22 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { DataService } from '../../services/data.service';
 import { Contact } from '../../models/contact-interface';
 
 @Component({
-    selector: 'app-form',
-    templateUrl: './form.component.html',
-    styleUrls: ['./form.component.css']
+    selector: 'app-edit-form',
+    templateUrl: './edit-form.component.html',
+    styleUrls: ['./edit-form.component.css']
 })
-export class FormComponent implements OnInit {
-    contact: Contact;
-    @Output() newContact: EventEmitter<Contact> = new EventEmitter();
-   
+export class EditFormComponent implements OnInit {
+    @Input() editValue;
+    @Output() updatedContact: EventEmitter<Contact> = new EventEmitter();
+    @Output() editCancel: EventEmitter<Object> = new EventEmitter();
+    cancelSwitch = false;
 
+
+    editForm: FormGroup;
 
     selectCityList: string[] = [
         "Sofia",
@@ -28,60 +31,48 @@ export class FormComponent implements OnInit {
         "Node.js Developer"
     ];
 
-    addForm: FormGroup;
-   
-
-
     constructor(private _dataService: DataService, private _formBilder: FormBuilder) { }
 
     ngOnInit() {
-        this.createFormValidation();
+        this.createFormValidationEdit();
     }
 
-    postRecord(formData) {
-        let contact = {
-            person: formData.name,
-            city: formData.city,
-            occupation: formData.occupation,
-            phone: formData.phone
-        };
+    editRecord(contact, id) {
+        console.log(contact);
+        console.log(id);
 
-        this._dataService.postData(contact).subscribe(
-            post => {
-                //console.log(post);
-                let newId = post[Object.keys(post)[0]];
+        this.updatedContact.emit({
+            id: id,
+            person: contact.person,
+            city: contact.city,
+            occupation: contact.occupation,
+            phone: contact.phone
+        });
 
-                this.newContact.emit({
-                    id: newId,
-                    person: contact.person,
-                    city: contact.city,
-                    occupation: contact.occupation,
-                    phone: contact.phone
-                });
-            },
-            error => alert("Some Error occurred. Check your internet connection."),
 
-            // Reset Form
-            () => {
-                this.createFormValidation()
-            }
-        );
+        this._dataService.updateContact(contact, id).subscribe(res => {
+            console.log(res);
+        });
     }
 
-    editRecord() {
+    cancel() {
+        this.editCancel.emit({
+            cancel: true
+        });
 
     }
 
-    createFormValidation() {
-        this.addForm = this._formBilder.group({
-            "name": ["", Validators.compose([
+    // Edit Validation ===================================
+    createFormValidationEdit() {
+        this.editForm = this._formBilder.group({
+            "person": [`${this.editValue.person}`, Validators.compose([
                 Validators.required,
                 Validators.minLength(3),
                 Validators.pattern("[A-Z]* *[ A-Z]+")
             ])],
-            "city": ["", Validators.required],
-            "occupation": ["", Validators.required],
-            "phone": ["", Validators.compose([
+            "city": [`${this.editValue.city}`, Validators.required],
+            "occupation": [`${this.editValue.occupation}`, Validators.required],
+            "phone": [`${this.editValue.phone}`, Validators.compose([
                 Validators.required,
                 Validators.minLength(6),
                 this.phoneValidatorStart,
@@ -89,6 +80,7 @@ export class FormComponent implements OnInit {
             ])]
         });
     }
+    //===================================================
 
     // Custrom Validation + or 00
     phoneValidatorStart(control: FormControl) {
@@ -113,4 +105,3 @@ export class FormComponent implements OnInit {
     }
 
 }
-
