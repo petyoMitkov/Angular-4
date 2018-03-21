@@ -1,133 +1,102 @@
-.dashboard {
-    border: 8px solid rgb(110, 181, 209);
-    border-radius: 10px;
-    margin-top: 10px;
-    padding: 20px 20px 150px 20px;
-    animation: fadeInDashboard 1.2s;
-}
-
-.btn:active,
-.btn:focus {
-    outline: none;
-}
-
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-}
-
-li {
-    margin-bottom: 4px;
-}
-
-
-/* ======= Contacts List =======*/
-
-.person-name {
-    line-height: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-}
-
-.city-and-occupation {
-    display: flex;
-    font-style: italic;
-    font-weight: 500;
-    font-size: 1.1em;
-    padding: 10px 0 10px 0;
-}
-
-.city-and-occupation :first-child {
-    flex: 1;
-}
-
-.city-and-occupation span {
-    flex: 2;
-}
-
-.glyphicon-phone-alt {
-    font-size: 1.2em;
-    color: rgb(102, 102, 102);
-    margin-right: 10px;
-}
-
-.phone-holder {
-    font-size: 1.4em;
-}
-
-.delete-holder {
-    padding: 5px 0 0px 0;
-    text-align: right;
-}
-
-
-/* ================ Animation ==================== */
-
-.add-new-item,
-.list-group-item {
-    animation: fadeIn 1s;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0.5;
-        background: rgb(19, 161, 26);
-    }
-    50% {
-        background: rgb(19, 161, 26);
-        opacity: 1;
-    }
-    100% {
-        background: rgb(255, 255, 255);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInDashboard {
-    0% {
-        opacity: 0;
-    }
-    99% {
-        opacity: 0;
-    }
-}
-
-@media (max-width: 768px) {
     .dashboard {
-        padding: 0px 0px 150px 0px;
-        border: none;
+        border: 8px solid rgb(110, 181, 209);
+        border-radius: 10px;
+        margin-top: 10px;
+        padding: 20px 20px 150px 20px;
+        animation: fadeInDashboard 1.2s;
     }
-}
-
-
-/*.form-stiky {
-    float: left;
-    position: fixed;
-    top: 10px;
-    left: 0px;
-    background: red;
-    width: 100vw;
-    height: 100vh;
-}*/
-
-.app-edit-form {
-    float: left;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-}
-
-.edit-form-bg {
-    background: red;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-}
-
-.edit-form {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 5;
-    transform: translate(-50%, -50%);
-}
+    
+    .btn:active,
+    .btn:focus {
+        outline: none;
+    }
+    
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
+    
+    li {
+        margin-bottom: 4px;
+    }
+    /* ======= Contacts List =======*/
+    
+    .person-name {
+        line-height: 10px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
+    
+    .city-and-occupation {
+        display: flex;
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.1em;
+        padding: 10px 0 10px 0;
+    }
+    
+    .city-and-occupation :first-child {
+        flex: 1;
+    }
+    
+    .city-and-occupation span {
+        flex: 2;
+    }
+    
+    .glyphicon-phone-alt {
+        font-size: 1.2em;
+        color: rgb(102, 102, 102);
+        margin-right: 10px;
+    }
+    
+    .phone-holder {
+        font-size: 1.4em;
+    }
+    
+    .delete-holder {
+        padding: 5px 0 0px 0;
+        text-align: right;
+    }
+    /* ================ Animation ==================== */
+    
+    .add-new-item,
+    .list-group-item {
+        animation: fadeIn 1s;
+    }
+    
+    @keyframes fadeIn {
+        0% {
+            opacity: 0.5;
+            background: rgb(19, 161, 26);
+        }
+        50% {
+            background: rgb(19, 161, 26);
+            opacity: 1;
+        }
+        100% {
+            background: rgb(255, 255, 255);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeInDashboard {
+        0% {
+            opacity: 0;
+        }
+        99% {
+            opacity: 0;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .dashboard {
+            padding: 0px 0px 150px 0px;
+            border: none;
+        }
+    }
+    
+    .stiky {
+        -webkit-position: sticky;
+        position: sticky;
+        top: 10px;
+    }

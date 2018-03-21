@@ -5,25 +5,20 @@
         </h1>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-lg-offset-1">
-        <div *ngIf="!viewEditForm" class="app-form">
+    <div *ngIf="!viewEditForm" class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-lg-offset-1">
+        <div class="app-form">
             <app-form (newContact)="onNewContact($event)"></app-form>
         </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-lg-offset-0">
-        <div *ngIf="viewEditForm" class="app-edit-form">
-            <div class="edit-form-bg"></div>
-            <div class="edit-form">
-                <app-edit-form [editValue]="editValue" (updatedContact)="onUpdatedContact($event)" (editCancel)="onEeditCancel($event)">
-                </app-edit-form>
-            </div>
+    <div *ngIf="viewEditForm" class="col-xs-12 col-sm-12 col-md-6 col-lg-5 col-lg-offset-1 stiky">
+        <div class="app-edit-form">
+            <app-edit-form [editValue]="editValue" (updatedContact)="onUpdatedContact($event)" (editCancel)="onEeditCancel($event)">
+            </app-edit-form>
         </div>
     </div>
 
-
-
-    <div *ngIf="!viewEditForm" class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let contact of contactsList" let i="index">
 
