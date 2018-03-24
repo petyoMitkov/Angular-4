@@ -1,0 +1,56 @@
+Auth with Angular 4 & angularfire2
+<div class="holder">
+    <h1>Auth with Google</h1>
+    <div *ngIf="afAuth.authState | async as user; else showLogin">
+        <h1>Hello {{ user.displayName }}!</h1>
+        <button (click)="logout()">Logout</button>
+    </div>
+    <ng-template #showLogin>
+        <p>Please login.</p>
+        <button (click)="login()">Login with Google</button>
+    </ng-template>
+</div>
+<br>
+<br>
+<div class="holder">
+    <h1>Auth with email & pass</h1>
+    <h1>
+        State:
+        <span *ngIf="afAuth.authState | async as res; else showEmaiilLogin">
+          {{res.email}}
+        </span>
+        <ng-template #showEmaiilLogin>
+            Not Login
+        </ng-template>
+    </h1>
+
+    <div class="holder">
+        <form action="">
+            New User
+            <hr>
+            <label>email</label>
+            <input type="text" name="email" [(ngModel)]="email" id="">
+            <label>password</label>
+            <input type="text" name="password" [(ngModel)]="password" id="">
+            <br>
+            <br>
+            <button (click)="emailNewUser()">New User</button>
+        </form>
+    </div>
+    <br>
+    <div class="holder">
+        <form action="">
+            Login
+            <hr>
+            <label>email</label>
+            <input type="text" name="email" [(ngModel)]="email" id="">
+            <label>password</label>
+            <input type="text" name="password" [(ngModel)]="password" id="">
+            <br>
+            <br>
+            <button (click)="emailLogin()">Log in</button>
+        </form>
+    </div>
+    <br>
+    <button (click)="emailLogout()">=== Log out ===</button>
+</div>
