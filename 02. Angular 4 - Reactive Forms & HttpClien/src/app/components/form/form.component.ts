@@ -12,7 +12,7 @@ import { Contact } from '../../models/contact-interface';
 export class FormComponent implements OnInit {
     contact: Contact;
     @Output() newContact: EventEmitter<Contact> = new EventEmitter();
-   
+
 
 
     selectCityList: string[] = [
@@ -29,7 +29,7 @@ export class FormComponent implements OnInit {
     ];
 
     addForm: FormGroup;
-   
+
 
 
     constructor(private _dataService: DataService, private _formBilder: FormBuilder) { }
@@ -66,10 +66,6 @@ export class FormComponent implements OnInit {
                 this.createFormValidation()
             }
         );
-    }
-
-    editRecord() {
-
     }
 
     createFormValidation() {

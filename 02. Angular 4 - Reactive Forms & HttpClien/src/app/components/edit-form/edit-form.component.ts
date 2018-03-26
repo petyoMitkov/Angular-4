@@ -53,6 +53,9 @@ export class EditFormComponent implements OnInit {
         this._dataService.updateContact(contact, id).subscribe(res => {
             console.log(res);
         });
+
+        // Cloase after submit editing
+        this.cancel();
     }
 
     cancel() {

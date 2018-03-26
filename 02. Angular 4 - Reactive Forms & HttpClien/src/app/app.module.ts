@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DataService } from './services/data.service';
 import { FormComponent } from './components/form/form.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
     AppComponent,
     DashboardComponent,
     FormComponent,
-    EditFormComponent
+    EditFormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
