@@ -1,0 +1,32 @@
+// For 1 Yeaer => display months
+convertDataToBarChartMonths() {
+    let mapSum = new Map();
+    
+    for (let row of this.statistics) {
+        let month = new Date(row.date_short).getMonth();
+        let queries = row.queries;
+
+        if (mapSum.has(month)) {
+            mapSum.set(month, mapSum.get(month) + queries);
+        }
+        else {
+            mapSum.set(month, queries);
+        }
+    }
+    
+    let arr = Array.from(mapSum);
+
+    // Get Arr for Y vertical
+    this.mainbarChartValues = [];
+    for (let key in arr) {
+        this.mainbarChartValues.push(arr[key][1]);
+    }
+
+    // Get Arr for X horizontal
+    this.mainBarChartTimeLine = [];
+    for (let key in arr) {
+        this.mainBarChartTimeLine.push(this.monthNames[arr[key][0]]);
+    }
+
+    this.mainBarChartTimeLine = this.formatingTimeLineFor1Year(this.mainBarChartTimeLine);
+}
